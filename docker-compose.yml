@@ -1,0 +1,26 @@
+services:
+  container_1:
+    build:
+      context: ./container_1
+    # image: dishaanand2219/js_app_1-container_1
+    ports:
+      - 6000:6000
+    networks:
+      - mutli_container_network
+    volumes:
+      - .:/disha_PV_dir
+
+  container_2:
+    build:
+      context: ./container_2
+    # image: dishaanand2219/js_app_1-container_2
+    ports:
+      - 8000:8000
+    networks:
+      - mutli_container_network
+    volumes:
+      - .:/disha_PV_dir
+
+networks:
+  mutli_container_network:
+    driver: bridge

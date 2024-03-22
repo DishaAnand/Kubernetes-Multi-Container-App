@@ -1,0 +1,15 @@
+steps:
+  # build the container image
+- name: "gcr.io/cloud-builders/docker"
+  args: ["build", "-t", "gcr.io/csci5409-cloud/container_2:latest", "."]
+  # push container image
+- name: "gcr.io/cloud-builders/docker"
+  args: ["push", "gcr.io/csci5409-cloud/container_2:latest"]
+  # deploy container image to GKE
+- name: "gcr.io/cloud-builders/gke-deploy"
+  args:
+  - run
+  - --filename=./k8_mainfests/
+  - --image=gcr.io/csci5409-cloud/container_2:latest
+  - --location=uscentra1-a
+  - --cluster=csci5409-cloud-cluster
