@@ -45,3 +45,15 @@ npm install
 cd ../container_2
 npm install
 ```
+### Deployment
+#### Docker
+1. Build and run the containers
+   ```sh
+    docker-compose up --build
+   ```
+#### Kubernetes
+1. Apply Kubernetes manifests
+   ```sh
+   kubectl apply -f container_1/k8_manifests/
+   kubectl apply -f container_2/k8_manifests/
+   ```
